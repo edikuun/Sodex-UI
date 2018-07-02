@@ -1,0 +1,145 @@
+<div class="wrapper">
+  <div class="main">
+    <div class="section section-dark">
+      <div class="container">
+        <div class="row">
+          <h2 class="title">Transfer SODE
+            <font color="red">X?</font>
+          </h2>
+          <br/>
+        </div>
+        <!-- <div class="row">
+          <form class="form-inline needs-validaiton">
+
+            <label class="sr-only" for="inlineFormInputGroup">SourceCardNo</label>
+            <div class="input-group col-6">
+              <div class="input-group-addon">Source Card No. :</div>
+              <input type="text" class="form-control" id="sourceCardNo" placeholder="" required>
+            </div>
+
+
+            <div class="form-check col-2">
+              <button type="button" id="lockId" (click)="toggle()" class="btn btn-round btn-danger">Lock</button>
+            </div>
+
+            <label class="sr-only" for="inlineFormInputGroup">SourceBalance</label>
+            <div class="input-group col">
+              <div class="input-group-addon">Balance:</div>
+              <input type="text" class="form-control" id="sourceBalance" placeholder="" readonly style="pointer-events: none">
+            </div>
+
+          </form>
+        </div>
+        <br>
+        <div class="row">
+          <form class="form-inline needs-validaiton">
+            <label class="sr-only" for="inlineFormInputGroup">DestCardNo</label>
+            <div class="input-group">
+              <div class="input-group-addon col-6">Destination Card No. :</div>
+              <input type="text" class="form-control" id="destCardNo" placeholder="" required>
+            </div>
+            <label class="sr-only" for="inlineFormInputGroup">Amount</label>
+            <div class="input-group">
+              <div class="input-group-addon">Amount:</div>
+              <input type="number" class="form-control" id="amountId" placeholder="">
+            </div>
+            <div class="form-check">
+              <button data-toggle="modal" data-target="#exampleModalCenter" type="button" (click)="transfer()" class="btn btn-round btn-danger"
+                id="transferId" disabled style="pointer-events: none">Transfer</button>
+            </div>
+          </form>
+        </div> -->
+
+        <form class="needs-validation" novalidate>
+          <div class="form-row align-items-center">
+            <div class="col-sm-4 my-1">
+              <label class="sr-only" for="inlineFormInputGroupUsername">Source Card</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Source Card: </div>
+                </div>
+                <input type="text" class="form-control" id="sourceCardNo" placeholder="Source Card Number" required>
+              </div>
+            </div>
+            <div class="col-sm-3 my-1">
+              <label class="sr-only" for="inlineFormInputGroupUsername">Balance</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Balance: </div>
+                </div>
+                <input type="text" class="form-control" id="sourceBalance" readonly style="pointer-events: none" placeholder="Balance">
+              </div>
+            </div>
+            <div class="col-auto my-1">
+              <button type="button" class="btn btn-danger btn-round" id="lockId" (click)="toggle()">Lock</button>
+            </div>
+          </div>
+          <br>
+          <div class="form-row align-items-center">
+            <div class="col-sm-4 my-1">
+              <label class="sr-only" for="inlineFormInputGroupUsername">Destination Card</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Destination Card: </div>
+                </div>
+                <input type="text" class="form-control" id="destCardNo" placeholder="Destination Card Number" required>
+              </div>
+            </div>
+            <div class="col-sm-3 my-1">
+              <label class="sr-only" for="inlineFormInputGroupUsername">Amount</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Amount: </div>
+                </div>
+                <input type="number" class="form-control" id="amountId" placeholder="Amount" required>
+              </div>
+            </div>
+            <div class="col-auto my-1">
+              <button type="button" class="btn btn-danger btn-round" (click)="transfer()" id="transferId" disabled style="pointer-events: none">Transfer</button>
+            </div>
+          </div>
+        </form>
+
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function() {
+              'use strict';
+              window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                  form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                  }, false);
+                });
+              }, false);
+            })();
+            </script>
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" id="modalContext">
+                SDSADSADA
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>

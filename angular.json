@@ -27,9 +27,21 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/sass/paper-kit.scss",
+              "src/assets/css/demo.css",
+              "src/assets/css/nucleo-icons.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/popper.js/dist/popper.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/paper-kit.js",
+              "src/assets/js/moment.min.js",
+              "src/assets/js/bootstrap-datetimepicker.min.js",
+              "src/assets/js/nouislider.js"
+            ]
           },
           "configurations": {
             "production": {
