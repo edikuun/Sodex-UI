@@ -37,12 +37,12 @@ export class TransferService {
         this.http.post(url, JSON.stringify(transData), options).subscribe(
             res => {
                 console.log(res);
-                modalCont.value = res.text();
-                // alert(res.text());
+                // modalCont.value = res.text();
+                alert(res.text());
             },
             err => {
-                modalCont.value = 'Error occured';
-                // alert('Error occured');
+                // modalCont.value = 'Error occured';
+                alert('Error occured');
                 console.log('Error occured');
             }
         );

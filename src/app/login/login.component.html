@@ -7,10 +7,10 @@
                         <div class="card card-register bg-dark">
                             <h3 class="title">Welcome</h3>
                             <div class="social-line text-center">
-                                <a href="#pablo" class="btn btn-neutral btn-facebook btn-just-icon">
+                                <a (click)="auth.facebookLogin()" class="btn btn-neutral btn-facebook btn-just-icon">
                                     <i class="fa fa-facebook-square"></i>
                                 </a>
-                                <a href="#pablo" class="btn btn-neutral btn-google btn-just-icon">
+                                <a (click)="auth.googleLogin()" class="btn btn-neutral btn-google btn-just-icon">
                                     <i class="fa fa-google-plus"></i>
                                 </a>
                                 <a href="#pablo" class="btn btn-neutral btn-twitter btn-just-icon">
@@ -30,8 +30,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="footer register-footer text-center">
                 </div>
             </div>
     </div>

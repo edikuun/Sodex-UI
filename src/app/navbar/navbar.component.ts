@@ -1,5 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { AfService } from '../providers/af.service';
+import { LoginComponent } from '../login/login.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +12,10 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 export class NavbarComponent implements OnInit {
 
   private toggleButton: any;
-    private sidebarVisible: boolean;
+  private sidebarVisible: boolean;
 
-    constructor(public location: Location, private element: ElementRef) {
+    // tslint:disable-next-line:no-shadowed-variable
+    constructor(public location: Location, private element: ElementRef, public auth: AfService) {
         this.sidebarVisible = false;
     }
 

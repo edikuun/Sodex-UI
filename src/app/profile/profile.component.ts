@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AfService } from '../providers/af.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public auth: AfService
+  ) { }
 
   ngOnInit() {
   }

@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TransferService } from './transfer.service';
+import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+
+// tslint:disable-next-line:component-class-suffix
 
 @Component({
   selector: 'app-transfer',
@@ -11,7 +14,8 @@ export class TransferComponent implements OnInit {
   modalText = '';
 
   constructor(
-    private transferService: TransferService
+    private transferService: TransferService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() { }
@@ -57,10 +61,13 @@ export class TransferComponent implements OnInit {
       Amount: parseInt(amount.value, 10),
       Particulars: 'Initial ON Semi Load'
     };
+    // const modalRef = this.modalService.open(NgbdModalContent);
+    // modalRef.componentInstance.name = 'World';
 
     this.transferService.transfer(transferdata, modalCont);
 
     console.log(JSON.stringify(transferdata));
+
   }
 
 }
