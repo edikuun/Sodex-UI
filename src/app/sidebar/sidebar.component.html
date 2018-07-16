@@ -1,49 +1,11 @@
-<div class="wrapper">
-  <div class="main">
-      <div *ngIf="auth.user | async as user" class="sidebar" data-color="danger" data-background-color="black" data-image="../assets/img/sidebar-1.jpg">
-        <div class="sidebar-wrapper">
-          <br>
-          <br>
-          <br>
-          <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link">
-                <img [src]="user.photoURL" height="60" class="align-top img-circle img-responsive img-no-padding" alt="">
-                <p>{{ user.displayName }}</p>
-              </a>
-            </li>
-            <li class="nav-item  ">
-              <a class="nav-link" href="./dashboard.html">
-                <i class="material-icons">dashboard</i>
-                <p>Dashboard</p>
-              </a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" routerLink="./profile">
-                <i class="material-icons">person</i>
-                <p>Profile</p>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" routerLink="./transfer">
-                <i class="material-icons">content_paste</i>
-                <p>Transfer</p>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="./typography.html">
-                <i class="material-icons">library_books</i>
-                <p>Report</p>
-              </a>
-            </li>
-            <!-- <li class="nav-item active-pro ">
-                  <a class="nav-link" href="./upgrade.html">
-                      <i class="material-icons">unarchive</i>
-                      <p>Upgrade to PRO</p>
-                  </a>
-              </li> -->
-          </ul>
-        </div>
-      </div>
-  </div>
-</div>
+<!-- <div *ngIf="auth.user | async as user" class="side-username">
+    <h6 class="title">{{user.displayName}}</h6>
+</div> -->
+<mat-divider></mat-divider>
+<mat-nav-list class="mat-nav-list-styles">
+    <a mat-list-item routerLink="./profile"> Profile</a>
+    <mat-divider></mat-divider>
+    <a mat-list-item routerLink="./transfer"> Transfer</a>
+    <mat-divider></mat-divider>
+    <a mat-list-item routerLink="./reports"> Reports</a>
+</mat-nav-list>

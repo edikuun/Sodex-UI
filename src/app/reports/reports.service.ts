@@ -16,8 +16,7 @@ export class ReportService {
 
     res: TransactionData[];
 
-    getTransaction(card: string, start: string, end: string): any {
-        // let account = AccountDetails;
+    getTransaction(card: string, start: string, end: string) {
         // YYYY-MM-DD
         // tslint:disable-next-line:prefer-const
         let gg: TransactionData[];
@@ -29,15 +28,6 @@ export class ReportService {
         this.http.get(urls).subscribe(
             response => {
                 const results = new ObservableArray(response.json());
-                // console.log(balanceField);
-                // gg = {
-                //     Id: 1, CardId: 2,
-                //     CardNumber: 'sample string 3',
-                //     LedgerDateTime: 'sample string 4',
-                //     DebitAmount: 5.0,
-                //     CreditAmount: 6.0,
-                //     Particulars: 'sample string 7'
-                //             };
                 if (results.length > 0) {
                     for ( let i = 0; i <= results.length - 1; i++) {
                         trans.push({
@@ -55,8 +45,6 @@ export class ReportService {
                 this.res = trans;
                 console.log('TEST');
                 console.log(this.res);
-                // balanceField = trans;
-                // console.log(balanceField);
             }
         );
     }

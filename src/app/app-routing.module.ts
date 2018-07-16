@@ -10,23 +10,24 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { DashbarComponent } from './dashbar/dashbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReportsComponent } from './reports/reports.component';
+import { Dashboard2Component } from './dashboard2/dashboard2.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  // { path: 'profile', component: ProfileComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'user', component: UserComponent },
-  { path: 'transfer', component: TransferComponent },
   {
     path: 'dashboard',
-    component: DashboardComponent,
+    component: Dashboard2Component,
     children:
       [
+        { path: '', redirectTo: 'profile', pathMatch: 'full' },
         { path: 'profile', component: ProfileComponent },
-        { path: 'transfer', component: TransferComponent }
+        { path: 'transfer', component: TransferComponent },
+        { path: 'reports', component: ReportsComponent }
       ]
   },
-  { path: 'reports', component: ReportsComponent },
+  { path: 'side', component : SidebarComponent},
+  // { path: 'reports', component: ReportsComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: HomeComponent }
 ];

@@ -30,10 +30,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashbarComponent } from './dashbar/dashbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 // tslint:disable-next-line:max-line-length
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatFormFieldModule, MatInputModule, MatTableModule, MatDatepickerModule, NativeDateModule, MatTabsModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatFormFieldModule, MatInputModule, MatTableModule, MatDatepickerModule, NativeDateModule, MatTabsModule, MatCheckbox, MatCheckboxModule } from '@angular/material';
 import { CdkTableModule } from '../../node_modules/@angular/cdk/table';
 import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
 import { ReportService } from './reports/reports.service';
+import { Dashboard2Component } from './dashboard2/dashboard2.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { ReportService } from './reports/reports.service';
     DashboardComponent,
     ReportsComponent,
     SidebarComponent,
-    DashbarComponent
+    DashbarComponent,
+    Dashboard2Component
   ],
   imports: [
     BrowserModule,
@@ -75,7 +77,8 @@ import { ReportService } from './reports/reports.service';
     NativeDateModule,
     FormsModule,
     ReactiveFormsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatCheckboxModule
   ],
   providers: [
     TransferService,

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TransferService } from './transfer.service';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { AfService } from '../providers/af.service';
 
 // tslint:disable-next-line:component-class-suffix
 
@@ -15,7 +16,8 @@ export class TransferComponent implements OnInit {
 
   constructor(
     private transferService: TransferService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private auth: AfService
   ) { }
 
   ngOnInit() { }
@@ -44,9 +46,21 @@ export class TransferComponent implements OnInit {
       transferBut.disabled = false;
       transferBut.removeAttribute('style');
       lockId.innerHTML = 'Unlock';
-      this.transferService.getBalance(parseInt(sourceCard.value, 10), sourceBalance);
+      // this.transferService.getBalance(parseInt(sourceCard.value, 10), sourceBalance);
     }
 
+  }
+
+  checkSource() {
+    const sourceCard = (<HTMLInputElement>document.getElementById('sourceCardNo'));
+    const sourceBalance = (<HTMLInputElement>document.getElementById('sourceBalance'));
+    this.transferService.getBalance(parseInt(sourceCard.value, 10), sourceBalance);
+  }
+
+  checkDest() {
+    const destCard = (<HTMLInputElement>document.getElementById('destCardNo'));
+    const destBalance = (<HTMLInputElement>document.getElementById('destBalance'));
+    this.transferService.getBalance(parseInt(destCard.value, 10), destBalance);
   }
 
   transfer() {

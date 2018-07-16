@@ -13,6 +13,7 @@ import { ReportService } from './reports.service';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { delay } from '../../../node_modules/rxjs/operators';
 import { TransactionData } from '../model/model.transactiondata';
+import { AfService } from '../providers/af.service';
 // tslint:disable-next-line:no-duplicate-imports
 // import {default as _rollupMoment} from 'moment';
 
@@ -32,15 +33,6 @@ export const MY_FORMATS = {
   },
 };
 
-export interface TransactionData {
-  Id: number;
-  CardId: number;
-  CardNumber: string;
-  LedgerDateTime: string;
-  DebitAmount: number;
-  CreditAmount: number;
-  Particulars: string;
-}
 @Component({
   selector: 'app-reports',
   templateUrl: './reports.component.html',
@@ -57,8 +49,6 @@ export interface TransactionData {
 export class ReportsComponent implements OnInit {
 
   date = new FormControl(moment());
-
-  n = 1;
 
   displayedColumns: string[] = ['ID', 'Card ID', 'Date', 'Debit Amount', 'Credit Amount', 'Particulars'];
 
@@ -87,7 +77,7 @@ export class ReportsComponent implements OnInit {
   }
 
 
-  constructor(private reportService: ReportService) {
+  constructor(private reportService: ReportService, private auth: AfService) {
   }
 
   ngOnInit() {

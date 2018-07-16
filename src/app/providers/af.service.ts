@@ -52,7 +52,7 @@ export class AfService {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
         this.updateUserData(credential.user);
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/home']);
       });
   }
 
@@ -76,7 +76,7 @@ export class AfService {
 
   signOut() {
     this.afAuth.auth.signOut().then(() => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
     });
   }
 
