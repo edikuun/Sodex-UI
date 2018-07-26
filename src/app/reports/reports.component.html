@@ -1,15 +1,15 @@
-<div *ngIf="auth.user | async; then authenticated else guest">
+<!-- <div *ngIf="auth.user | async; then authenticated else guest"> -->
   <!-- template will replace this div -->
-</div>
+<!-- </div> -->
 
-<ng-template #guest>
+<!-- <ng-template #guest>
   <app-login></app-login>
-</ng-template>
+</ng-template> -->
 
-<ng-template #authenticated>
-  <div class="wrapper">
-    <div class="main">
-      <div class="section" style="background-color: whitesmoke">
+<!-- <ng-template #authenticated> -->
+  <!-- <div class="wrapper"> -->
+    <!-- <div class="main"> -->
+      <!-- <div class="section" style="background-color: whitesmoke"> -->
         <br>
         <div >
           <div class="container">
@@ -46,66 +46,74 @@
               </div>
             </div>
             <div class="row">
-              <button type="button" class="btn btn-danger btn-round" (click)="transact()">View</button>
+              <div class="col-auto my-1">
+                  <button type="button" class="btn btn-danger btn-round" (click)="transact()">View</button>
+              </div>
+              <div class="col-auto my-1">
+                  <button type="button" class="btn btn-danger btn-round" (click)="download()">Download</button>
+              </div>
             </div>
             <br>
             <br>
             <mat-form-field>
               <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search for an Entry">
             </mat-form-field>
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" matSort>
   
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  
-              <!-- ID -->
-              <ng-container matColumnDef="ID">
-                <th mat-header-cell *matHeaderCellDef> ID </th>
-                <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
-              </ng-container>
-  
-              <!-- Card ID -->
-              <ng-container matColumnDef="Card ID">
-                <th mat-header-cell *matHeaderCellDef> Card ID </th>
-                <td mat-cell *matCellDef="let element"> {{element.CardId}} </td>
-              </ng-container>
-  
-              <!-- Card Number -->
-              <ng-container matColumnDef="Card Number">
-                <th mat-header-cell *matHeaderCellDef> Card Number </th>
-                <td mat-cell *matCellDef="let element"> {{element.CardNumber}} </td>
-              </ng-container>
-  
-              <!-- Date -->
-              <ng-container matColumnDef="Date">
-                <th mat-header-cell *matHeaderCellDef> Date </th>
-                <td mat-cell *matCellDef="let element"> {{element.LedgerDateTime}} </td>
-              </ng-container>
-  
-              <!-- Debit Amount -->
-              <ng-container matColumnDef="Debit Amount">
-                <th mat-header-cell *matHeaderCellDef> Debit Amount </th>
-                <td mat-cell *matCellDef="let element"> {{element.DebitAmount}} </td>
-              </ng-container>
-  
-              <!-- Credit Amount -->
-              <ng-container matColumnDef="Credit Amount">
-                <th mat-header-cell *matHeaderCellDef> Credit Amount </th>
-                <td mat-cell *matCellDef="let element"> {{element.CreditAmount}} </td>
-              </ng-container>
-  
-              <!-- Particulars -->
-              <ng-container matColumnDef="Particulars">
-                <th mat-header-cell *matHeaderCellDef> Particulars </th>
-                <td mat-cell *matCellDef="let element"> {{element.Particulars}} </td>
-              </ng-container>
-  
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
+                    <!-- ID -->
+                    <ng-container matColumnDef="ID">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                      <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+                    </ng-container>
+        
+                    <!-- Card ID -->
+                    <ng-container matColumnDef="Card ID">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Card ID </th>
+                      <td mat-cell *matCellDef="let element"> {{element.CardId}} </td>
+                    </ng-container>
+        
+                    <!-- Card Number -->
+                    <ng-container matColumnDef="Card Number">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Card Number </th>
+                      <td mat-cell *matCellDef="let element"> {{element.CardNumber}} </td>
+                    </ng-container>
+        
+                    <!-- Date -->
+                    <ng-container matColumnDef="Date">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+                      <td mat-cell *matCellDef="let element"> {{element.LedgerDateTime}} </td>
+                    </ng-container>
+        
+                    <!-- Debit Amount -->
+                    <ng-container matColumnDef="Debit Amount">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Debit Amount </th>
+                      <td mat-cell *matCellDef="let element"> {{element.DebitAmount}} </td>
+                    </ng-container>
+        
+                    <!-- Credit Amount -->
+                    <ng-container matColumnDef="Credit Amount">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Credit Amount </th>
+                      <td mat-cell *matCellDef="let element"> {{element.CreditAmount}} </td>
+                    </ng-container>
+        
+                    <!-- Particulars -->
+                    <ng-container matColumnDef="Particulars">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Particulars </th>
+                      <td mat-cell *matCellDef="let element"> {{element.Particulars}} </td>
+                    </ng-container>
+        
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+            </div>
           </div>
           <br>
         </div>
-      </div>
-    </div>
-  </div>
-</ng-template>
+      <!-- </div> -->
+    <!-- </div> -->
+  <!-- </div> -->
+<!-- </ng-template> -->
 

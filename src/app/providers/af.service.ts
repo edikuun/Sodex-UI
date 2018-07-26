@@ -21,19 +21,100 @@ interface User {
 export class AfService {
   user: Observable<any>;
   date: Date = new Date();
+  data: Observable<any>;
+  public userDetails: firebase.User = null;
+  logged: boolean = null;
 
-  constructor(public afAuth: AngularFireAuth, private router: Router, private afs: AngularFirestore) {
+  constructor(public afAuth: AngularFireAuth,
+    private router: Router, private afs: AngularFirestore,
+    private _firebaseAuth: AngularFireAuth) {
 
-    //// Get auth data, then get firestore user document || null
-    this.user = this.afAuth.authState.pipe(
-      switchMap(user => {
+    // Get auth data, then get firestore user document || null
+
+    this.user = _firebaseAuth.authState;
+
+    // this.user = this._firebaseAuth.authState.pipe(
+    //   switchMap(user => {
+    //     if (user) {
+    //       return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+    //     } else {
+    //       return of(null);
+    //     }
+    //   }));
+
+    this.user.subscribe(
+      (user) => {
         if (user) {
-          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+          this.userDetails = user;
+          // console.log(this.userDetails);
         } else {
-          return of(null);
+          this.userDetails = null;
         }
-      }));
+      }
+    );
   }
+
+  // UPDATED LOGIN AUTH
+  signInWithTwitter() {
+    return this._firebaseAuth.auth.signInWithPopup(
+      new firebase.auth.TwitterAuthProvider()
+    );
+  }
+
+
+  signInWithFacebook() {
+    return this._firebaseAuth.auth.signInWithPopup(
+      new firebase.auth.FacebookAuthProvider()
+    );
+  }
+
+  signInWithGoogle() {
+    // console.log(this.userDetails);
+    return this._firebaseAuth.auth.signInWithPopup(
+      new firebase.auth.GoogleAuthProvider()
+    );
+
+
+  }
+
+  signInWithGithub() {
+    return this._firebaseAuth.auth.signInWithPopup(
+      new firebase.auth.GithubAuthProvider()
+    );
+  }
+
+  signInRegular(email, password) {
+    const credential = firebase.auth.EmailAuthProvider.credential(email, password);
+    // console.log(credential);
+    // console.log('SADSADSA');
+
+    return this._firebaseAuth.auth.signInWithEmailAndPassword(email, password);
+  }
+
+
+  isLoggedIn() {
+    if (this.userDetails == null) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  isAdmin() {
+    if (this.userDetails.uid === 'uVkhfKOzaWcb1q0XbGjcxiVjsUc2') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+  logout() {
+    this._firebaseAuth.auth.signOut()
+      .then((res) => this.router.navigate(['/']));
+  }
+
+  // END OF UPDATED LOGIN AUTH
 
 
   googleLogin() {
@@ -76,7 +157,7 @@ export class AfService {
 
   signOut() {
     this.afAuth.auth.signOut().then(() => {
-        this.router.navigate(['/home']);
+      this.router.navigate(['/home']);
     });
   }
 

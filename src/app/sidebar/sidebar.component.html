@@ -1,11 +1,13 @@
 <!-- <div *ngIf="auth.user | async as user" class="side-username">
     <h6 class="title">{{user.displayName}}</h6>
 </div> -->
-<mat-divider></mat-divider>
+<!-- <mat-divider></mat-divider> -->
 <mat-nav-list class="mat-nav-list-styles">
-    <a mat-list-item routerLink="./profile"> Profile</a>
+    <a mat-list-item style="text-transform: uppercase">{{name}}</a>
     <mat-divider></mat-divider>
     <a mat-list-item routerLink="./transfer"> Transfer</a>
     <mat-divider></mat-divider>
     <a mat-list-item routerLink="./reports"> Reports</a>
+    <!-- <mat-divider></mat-divider>
+    <a *ngIf="authService.isAdmin()" mat-list-item routerLink="./login"> Login as Teller</a> -->
 </mat-nav-list>

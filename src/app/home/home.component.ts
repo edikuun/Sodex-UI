@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AfService } from '../providers/af.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  test: Date = new Date();
+
+  constructor(public authService: AfService) { }
 
   ngOnInit() {
   }

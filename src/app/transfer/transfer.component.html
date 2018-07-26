@@ -1,15 +1,15 @@
-<div *ngIf="auth.user | async; then authenticated else guest">
+<!-- <div *ngIf="auth.user | async; then authenticated else guest"> -->
   <!-- template will replace this div -->
-</div>
+<!-- </div> -->
 
-<ng-template #guest>
+<!-- <ng-template #guest>
   <app-login></app-login>
-</ng-template>
+</ng-template> -->
 
-<ng-template #authenticated>
-  <div class="wrapper">
-    <div class="main">
-      <div class="section" style="background-color: whitesmoke">
+<!-- <ng-template #authenticated> -->
+  <!-- <div class="wrapper"> -->
+    <!-- <div class="main"> -->
+      <!-- <div class="section" style="background-color: whitesmoke"> -->
         <div class="container">
           <div class="row">
             <h2 class="title" style="color: black">Transfer SODE
@@ -20,23 +20,26 @@
 
           <form class="needs-validation" novalidate>
             <div class="form-row align-items-center">
-              <div class="col-sm-4 my-1">
+              <!-- <div class="col-sm-4 my-1">
                 <label class="sr-only" for="inlineFormInputGroupUsername">Source Card</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">Source Card: </div>
                   </div>
-                  <input (focusout)="checkSource()" type="text" class="form-control" id="sourceCardNo" placeholder="Source Card Number" required>
+                  <input (focusout)="checkSource()" type="text" class="form-control" id="sourceCardNo" placeholder="14146187" disabled required>
                 </div>
-              </div>
-              <div class="col-sm-3 my-1">
+              </div> -->
+              <div class="col-sm-4 my-1">
                 <label class="sr-only" for="inlineFormInputGroupUsername">Balance</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
-                    <div class="input-group-text">Balance: </div>
+                    <div class="input-group-text">Source Balance: </div>
                   </div>
                   <input type="text" class="form-control" id="sourceBalance" readonly style="pointer-events: none" placeholder="Source Balance">
                 </div>
+              </div>
+              <div class="col-auto my-1">
+                <button type="button" class="btn btn-danger btn-round" (click)="checkSource()">Check Balance</button>
               </div>
             </div>
             <br>
@@ -47,10 +50,10 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">Destination Card: </div>
                   </div>
-                  <input (focusout)="checkDest()" type="text" class="form-control" id="destCardNo" placeholder="Destination Card Number" required>
+                  <input autofocus (keydown.enter)="onKeydown($event)" (focusout)="checkDest(); checkSource();" type="password" class="form-control" id="destCardNo" placeholder="Destination Card Number" required>
                 </div>
               </div>
-              <div class="col-sm-3 my-1">
+              <div class="col-sm-3 my-1" style="visibility: hidden;">
                 <label class="sr-only" for="inlineFormInputGroupUsername">Balance</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -61,27 +64,24 @@
               </div>
             </div>
             <br>
-            <div class="form-row align-items-center">
-              <div class="col-sm-3 my-1">
+            <!-- <div class="form-row align-items-center">
+              <div class="col-sm-4 my-1">
                 <label class="sr-only" for="inlineFormInputGroupUsername">Amount</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">Amount: </div>
                   </div>
-                  <input type="number" class="form-control" id="amountId" placeholder="Amount" required>
+                  <input (keydown.enter)="transfer()" type="number" class="form-control" id="amountId" placeholder="Amount" required>
                 </div>
               </div>
               <div class="col-auto my-1">
-                <button type="button" class="btn btn-danger btn-round" id="lockId" (click)="toggle()">Lock</button>
+                <button type="button" class="btn btn-danger btn-round" (click)="transfer()" id="transferId">Transfer</button>
               </div>
-              <div class="col-auto my-1">
-                <button type="button" class="btn btn-danger btn-round" (click)="transfer()" id="transferId" disabled style="pointer-events: none">Transfer</button>
-              </div>
-            </div>
+            </div> -->
           </form>
 
         </div>
-      </div>
-    </div>
-  </div>
-</ng-template>
+      <!-- </div> -->
+    <!-- </div> -->
+  <!-- </div> -->
+<!-- </ng-template> -->

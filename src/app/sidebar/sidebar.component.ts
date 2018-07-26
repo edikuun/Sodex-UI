@@ -13,14 +13,16 @@ export class SidebarComponent implements OnInit, OnDestroy {
   opened: boolean;
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
+  name: string;
 
   constructor(
-    public auth: AfService,
+    public authService: AfService,
     changeDetectorRef: ChangeDetectorRef, media: MediaMatcher
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+    this.name = this.authService.userDetails.email.replace('@gmail.com', '');
   }
 
   ngOnDestroy(): void {

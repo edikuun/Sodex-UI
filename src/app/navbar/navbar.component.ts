@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   private sidebarVisible: boolean;
 
     // tslint:disable-next-line:no-shadowed-variable
-    constructor(public location: Location, private element: ElementRef, public auth: AfService) {
+    constructor(public location: Location, private element: ElementRef, public authService: AfService) {
         this.sidebarVisible = false;
     }
 

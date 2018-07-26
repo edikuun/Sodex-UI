@@ -1,8 +1,6 @@
-<div *ngIf="auth.user | async; then authenticated else guest">
-  <!-- template will replace this div -->
-</div>
-<ng-template #guest>
-  <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+
+<!-- <ng-template #guest> -->
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <div class="navbar-translate">
         <a class="navbar-brand" routerLink="/">SODE
@@ -21,54 +19,24 @@
             <a routerLink="/transfer" class="nav-link">
               <i class="nc-icon nc-send"></i> Transfer</a>
           </li> -->
-          <li class="nav-item">
+          <li *ngIf="!authService.isLoggedIn()" class="nav-item">
             <a routerLink="/login" class="nav-link">
               <i class="nc-icon nc-check-2"></i> Login</a>
           </li>
+          <li *ngIf="authService.isLoggedIn()" class="nav-item">
+            <a routerLink="/dashboard" class="nav-link">
+              <i class="nc-icon nc-compass-05"></i> Dashboard</a>
+        </li>
+        <li *ngIf="authService.isLoggedIn()" class="nav-item">
+          <a (click)="authService.logout()" class="nav-link" style="cursor: pointer;">
+            <i class="nc-icon nc-single-02"></i> Logout</a>
+        </li>
         </ul>
       </div>
     </div>
   </nav>
-</ng-template>
-<ng-template #authenticated>
-  <div *ngIf="auth.user | async as user">
-    <nav class="navbar navbar-expand-lg fixed-top">
-      <div class="container">
-        <div class="navbar-translate">
-          <a class="navbar-brand" routerLink="/">SODE
-            <font color="red">X</font>
-          </a>
-          <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02"
-            aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
-            <span class="navbar-toggler-bar"></span>
-            <span class="navbar-toggler-bar"></span>
-            <span class="navbar-toggler-bar"></span>
-          </button>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarToggler">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a routerLink="/dashboard" class="nav-link">
-                  <i class="nc-icon nc-compass-05"></i> Dashboard</a>
-            </li>
-            <!-- <li class="nav-item">
-              <a routerLink="/transfer" class="nav-link">
-                <i class="nc-icon nc-send"></i> Transfer</a>
-            </li> -->
-            <!-- <li class="nav-item">
-              <a routerLink="/reports" class="nav-link">
-                <i class="nc-icon nc-briefcase-24"></i> Report</a>
-            </li> -->
-            <li class="nav-item">
-              <a (click)="auth.signOut()" class="nav-link" style="cursor: pointer;">
-                <i class="nc-icon nc-single-02"></i> Logout</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </div>
-</ng-template>
+<!-- </ng-template> -->
+
 <!-- <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
   <div class="container">
     <div class="navbar-translate">

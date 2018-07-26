@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { TransferComponent } from './transfer/transfer.component';
+import { DialogOverviewExampleDialogComponent } from './transfer/transfer.component';
 
 
 import { TransferService } from './transfer/transfer.service';
@@ -30,11 +31,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashbarComponent } from './dashbar/dashbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 // tslint:disable-next-line:max-line-length
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatFormFieldModule, MatInputModule, MatTableModule, MatDatepickerModule, NativeDateModule, MatTabsModule, MatCheckbox, MatCheckboxModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatFormFieldModule, MatInputModule, MatTableModule, MatDatepickerModule, NativeDateModule, MatTabsModule, MatCheckbox, MatCheckboxModule, MatSortModule, MatPaginatorModule, MatPaginator, MatDialogModule, MatGridListModule, MatSnackBarModule } from '@angular/material';
 import { CdkTableModule } from '../../node_modules/@angular/cdk/table';
 import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
 import { ReportService } from './reports/reports.service';
 import { Dashboard2Component } from './dashboard2/dashboard2.component';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -51,7 +54,9 @@ import { Dashboard2Component } from './dashboard2/dashboard2.component';
     ReportsComponent,
     SidebarComponent,
     DashbarComponent,
-    Dashboard2Component
+    Dashboard2Component,
+    AdminloginComponent,
+    DialogOverviewExampleDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +83,16 @@ import { Dashboard2Component } from './dashboard2/dashboard2.component';
     FormsModule,
     ReactiveFormsModule,
     MatTabsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatDialogModule,
+    NgbModule,
+    MatGridListModule,
+    MatSnackBarModule
+  ],
+  entryComponents: [
+    DialogOverviewExampleDialogComponent
   ],
   providers: [
     TransferService,
@@ -87,6 +101,7 @@ import { Dashboard2Component } from './dashboard2/dashboard2.component';
     AngularFireAuth,
     UserService,
     AuthGuard,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

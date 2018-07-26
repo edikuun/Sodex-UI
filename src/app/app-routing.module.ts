@@ -11,22 +11,27 @@ import { DashbarComponent } from './dashbar/dashbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReportsComponent } from './reports/reports.component';
 import { Dashboard2Component } from './dashboard2/dashboard2.component';
+import { AuthGuard } from './providers/af.guard';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: AdminloginComponent },
   {
     path: 'dashboard',
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     component: Dashboard2Component,
     children:
       [
-        { path: '', redirectTo: 'profile', pathMatch: 'full' },
-        { path: 'profile', component: ProfileComponent },
+        { path: '', redirectTo: 'transfer', pathMatch: 'full' },
+        // { path: 'profile', component: ProfileComponent },
         { path: 'transfer', component: TransferComponent },
-        { path: 'reports', component: ReportsComponent }
+        { path: 'reports', component: ReportsComponent },
+        { path: 'login', component: LoginComponent }
       ]
   },
-  { path: 'side', component : SidebarComponent},
+  // { path: 'side', canActivate: [AuthGuard], component : SidebarComponent},
   // { path: 'reports', component: ReportsComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: HomeComponent }

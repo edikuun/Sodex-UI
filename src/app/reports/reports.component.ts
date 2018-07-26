@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { MatTableDataSource } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material';
+import { MatPaginator, MatSort, MatInputModule } from '@angular/material';
 import { DataSource } from '@angular/cdk/table';
 import { FormControl } from '@angular/forms';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
@@ -14,6 +14,7 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { delay } from '../../../node_modules/rxjs/operators';
 import { TransactionData } from '../model/model.transactiondata';
 import { AfService } from '../providers/af.service';
+import { Angular5Csv } from 'angular5-csv/Angular5-csv';
 // tslint:disable-next-line:no-duplicate-imports
 // import {default as _rollupMoment} from 'moment';
 
@@ -48,11 +49,26 @@ export const MY_FORMATS = {
 })
 export class ReportsComponent implements OnInit {
 
+  displayDate = new Date().toLocaleDateString();
+
   date = new FormControl(moment());
 
-  displayedColumns: string[] = ['ID', 'Card ID', 'Date', 'Debit Amount', 'Credit Amount', 'Particulars'];
+  displayedColumns: string[] = ['ID', 'Card ID', 'Card Number', 'Date', 'Debit Amount', 'Credit Amount', 'Particulars'];
 
-  dataSource;
+  dataSource: MatTableDataSource<TransactionData>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  options = {
+    fieldSeparator: ',',
+    decimalseparator: '.',
+    showLabels: true,
+    showTitle: false,
+    useBom: true,
+    noDownload: false,
+    headers: ['ID', 'Card ID', 'Card Number', 'Date', 'Debit Amount', 'Credit Amount', 'Particulars']
+  };
 
   transact() {
     const card = (<HTMLInputElement>document.getElementById('card'));
@@ -66,7 +82,15 @@ export class ReportsComponent implements OnInit {
     // tslint:disable-next-line:no-unused-expression
     this.reportService.getTransaction(card.value, finalStart, finalEnd);
     this.dataSource = new MatTableDataSource(this.reportService.res);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
     console.log(finalStart);
+    console.log(this.displayDate);
+  }
+
+  download() {
+    // tslint:disable-next-line:no-unused-expression
+    new Angular5Csv(this.reportService.res, 'Transactions - ' + this.displayDate, this.options);
   }
 
   // tslint:disable-next-line:member-ordering
@@ -77,7 +101,7 @@ export class ReportsComponent implements OnInit {
   }
 
 
-  constructor(private reportService: ReportService, private auth: AfService) {
+  constructor(private reportService: ReportService, public auth: AfService) {
   }
 
   ngOnInit() {
